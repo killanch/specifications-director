@@ -103,7 +103,7 @@
     {
         var defaultLabel = [anObject name].replace(/([A-Z])/g, ' $1').replace(/^./, function(str){ return str.toUpperCase(); });
         
-        [anObject setUserlabel:defaultLabel.trim()];
+        [anObject setUserlabel:defaultLabel.trim().substring(0, 50)];
     }
 }
 
