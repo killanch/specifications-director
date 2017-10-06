@@ -351,7 +351,7 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField verticalHuggingPriority="750" misplaced="YES" id="n58-At-Oze">
+                <textField toolTip="Userlabel for the object represented by the specification" verticalHuggingPriority="750" misplaced="YES" id="n58-At-Oze">
                     <rect key="frame" x="20" y="265" width="325" height="22"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="Domain Template" drawsBackground="YES" id="5O1-Oc-y8y">
@@ -412,6 +412,7 @@
                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" misplaced="YES" id="j1f-Lh-ibU">
                     <rect key="frame" x="20" y="147" width="325" height="80"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <string key="toolTip">The description of the object represented by the specification. This will be used when generating the API documentation using Monolithe.</string>
                     <textFieldCell key="cell" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="Domains are instantiated from domain templates. This object provides the definition of the Domain Template." drawsBackground="YES" id="fV7-z1-f3C">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>

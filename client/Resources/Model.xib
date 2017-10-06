@@ -213,7 +213,7 @@
                         <userDefinedRuntimeAttribute type="string" keyPath="tag" value="validation_server"/>
                     </userDefinedRuntimeAttributes>
                 </textField>
-                <textField toolTip="The bare LDAP server FQDN or IP." verticalHuggingPriority="750" misplaced="YES" id="WQe-YE-IOv">
+                <textField toolTip="Userlabel for the object represented by the specification" verticalHuggingPriority="750" misplaced="YES" id="WQe-YE-IOv">
                     <rect key="frame" x="20" y="192" width="365" height="22"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="My Entity" drawsBackground="YES" id="bN1-j9-9fU">
