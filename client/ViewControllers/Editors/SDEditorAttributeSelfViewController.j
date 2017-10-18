@@ -119,13 +119,9 @@
         case SDAttributeTypeString:
             [editionViews addObject:viewEditorStringConfig];
             break;
-
-        case SDAttributeTypeEnum:
-            [editionViews addObject:viewEditorEnumConfig];
-            break;
     }
 
-    if ([editedObject subtype] == SDAttributeTypeEnum)
+    if ([editedObject type] == SDAttributeTypeEnum || [editedObject subtype] == SDAttributeTypeEnum)
         [editionViews addObject:viewEditorEnumConfig];
 
     [editionViews addObject:viewEditorEnumFlags];
@@ -143,6 +139,7 @@
     if ([editedObject type] == SDAttributeTypeBoolean && ![editedObject defaultValue])
         [editedObject setDefaultValue:SDAttributeDefaultBoolean];
 
+    [editedObject setSubtype:nil];
     [self _updateSubtypeAllowedValues];
     [self reloadStackView];
 }
