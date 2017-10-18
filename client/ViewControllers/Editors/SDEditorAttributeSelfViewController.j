@@ -104,7 +104,7 @@
     var editionViews                = [viewEditionMain],
         editedObject                = [_currentContext editedObject],
         type                        = [editedObject type],
-        conditionSubtypeApplicable  = type == SDAttributeTypeList || type == SDAttributeTypeInteger || type == SDAttributeTypeFloat || type == SDAttributeTypeObject;
+        conditionSubtypeApplicable  = type == SDAttributeTypeList || type == SDAttributeTypeInteger || type == SDAttributeTypeFloat;
 
     if (conditionSubtypeApplicable)
         [editionViews addObject:viewEditorSubtype];
