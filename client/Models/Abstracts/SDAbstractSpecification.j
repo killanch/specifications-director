@@ -48,7 +48,7 @@
     CPString            _objectRESTName         @accessors(property=objectRESTName)
     CPString            _package                @accessors(property=package);
     CPString            _userlabel              @accessors(property=userlabel);
-    CPArrayController   _allowedJobCommands            @accessors(property=allowedJobCommands);
+    CPArrayController   _allowedJobCommands     @accessors(property=allowedJobCommands);
 
     SDAttributesFetcher _attributes             @accessors(property=attributes);
     SDChildAPIsFetcher  _childAPIs              @accessors(property=childAPIs);
