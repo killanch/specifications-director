@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13196" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14113" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13196"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14113"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -58,6 +58,7 @@
                 <outlet property="buttonSave" destination="AZh-hN-59e" id="3Gw-uK-X1s"/>
                 <outlet property="buttonSubtype" destination="hNA-JE-Qbi" id="Pxq-Hl-alJ"/>
                 <outlet property="scrollViewMain" destination="QYZ-X8-JFI" id="4aB-ey-uDU"/>
+                <outlet property="specificationAssociator" destination="acy-kM-OB4" id="zJh-8T-AbV"/>
                 <outlet property="tableViewEnumarationValues" destination="1oM-eM-Us5" id="nqZ-nk-Qc7"/>
                 <outlet property="view" destination="Upq-sK-5sY" id="Yam-Fq-K9P"/>
                 <outlet property="viewBottom" destination="WW1-Qt-D1i" id="2FR-6w-deG"/>
@@ -67,6 +68,7 @@
                 <outlet property="viewEditorNumberConfig" destination="CY0-iE-AwE" id="E6y-0g-fJh"/>
                 <outlet property="viewEditorStringConfig" destination="WKB-7o-sen" id="C5A-vO-Jw0"/>
                 <outlet property="viewEditorSubtype" destination="W7B-c7-dQ9" id="lSs-SW-hw6"/>
+                <outlet property="viewSubtypeSpecification" destination="wol-Cc-cGt" id="FKD-79-Awy"/>
             </connections>
         </viewController>
         <customView misplaced="YES" id="RY1-6O-kMY">
@@ -547,7 +549,7 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <clipView key="contentView" id="Oey-ry-Gd8">
                         <rect key="frame" x="1" y="1" width="195" height="66"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" rowHeight="14" id="1oM-eM-Us5">
                                 <rect key="frame" x="0.0" y="0.0" width="195" height="66"/>
@@ -556,7 +558,7 @@
                                 <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                 <tableColumns>
-                                    <tableColumn width="192" minWidth="40" maxWidth="1000" id="REY-BH-JcQ">
+                                    <tableColumn identifier="" width="192" minWidth="40" maxWidth="1000" id="REY-BH-JcQ">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -726,11 +728,11 @@
             <point key="canvasLocation" x="336.5" y="543.5"/>
         </customView>
         <customView misplaced="YES" id="W7B-c7-dQ9">
-            <rect key="frame" x="0.0" y="0.0" width="237" height="35"/>
+            <rect key="frame" x="0.0" y="0.0" width="237" height="60"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <textField verticalHuggingPriority="750" misplaced="YES" id="JNh-GA-z9s">
-                    <rect key="frame" x="18" y="21" width="201" height="14"/>
+                    <rect key="frame" x="18" y="46" width="201" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Subtype" id="aQh-k6-BmM">
                         <font key="font" metaFont="smallSystem"/>
@@ -739,7 +741,7 @@
                     </textFieldCell>
                 </textField>
                 <popUpButton toolTip="Select how the domain should handle DHCP requests" verticalHuggingPriority="750" misplaced="YES" id="hNA-JE-Qbi">
-                    <rect key="frame" x="17" y="-3" width="203" height="22"/>
+                    <rect key="frame" x="17" y="17" width="203" height="22"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <popUpButtonCell key="cell" type="push" title="Double" bezelStyle="rounded" alignment="left" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="oJy-ih-p2N" id="RBB-cj-OOI">
                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
@@ -789,9 +791,18 @@
                         <action selector="changeSubtype:" target="21U-at-kMr" id="GBJ-pY-n30"/>
                     </connections>
                 </popUpButton>
+                <customView misplaced="YES" id="wol-Cc-cGt">
+                    <rect key="frame" x="20" y="7" width="197" height="31"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                </customView>
             </subviews>
-            <point key="canvasLocation" x="336.5" y="-141.5"/>
+            <point key="canvasLocation" x="336.5" y="-129"/>
         </customView>
+        <viewController id="acy-kM-OB4" customClass="SDSpecificationAssociator">
+            <connections>
+                <outlet property="view" destination="wol-Cc-cGt" id="afi-Hg-8iK"/>
+            </connections>
+        </viewController>
     </objects>
     <resources>
         <image name="icon-repository" width="64" height="64"/>
