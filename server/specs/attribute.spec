@@ -160,11 +160,6 @@
             "type": "string"
         },
         {
-            "description": "UUID of subtype specification. Not used by monolithe.",
-            "name": "subtypeID",
-            "type": "string"
-        },
-        {
             "description": "Preferred label for this attribute on the UI.",
             "name": "userlabel",
             "type": "string"
