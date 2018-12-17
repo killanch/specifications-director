@@ -29,10 +29,6 @@
 @import <NUKit/NUAbstractSimpleObjectAssociator.j>
 
 @implementation SDSpecificationAssociator : NUAbstractSimpleObjectAssociator
-{
-    CPString        _keyPathForAssociatedObjectID       @accessors(property=keyPathForAssociatedObjectID);
-    CPPredicate     _filterPredicate                    @accessors(property=filterPredicate);
-}
 
 - (CPArray)currentActiveContextIdentifiers
 {
@@ -61,17 +57,12 @@
 
 - (CPString)keyPathForAssociatedObjectID
 {
-    return _keyPathForAssociatedObjectID ? _keyPathForAssociatedObjectID : @"associatedSpecificationID";
+    return @"associatedSpecificationID";
 }
 
 - (NUVSDObject)parentOfAssociatedObjects
 {
     return [SDRepository currentRepository];
-}
-
-- (CPPredicate)filterObjectPredicate
-{
-    return _filterPredicate;
 }
 
 @end

@@ -37,8 +37,6 @@
 @global SDAttributeTypeList
 @global SDAttributeTypeObject
 
-@class SDSpecificationAssociator
-
 @implementation SDEditorAttributeSelfViewController : NUModuleSelfParent
 {
     @outlet CPPopUpButton   buttonSubtype;
@@ -48,9 +46,6 @@
     @outlet CPView          viewEditorNumberConfig;
     @outlet CPView          viewEditorStringConfig;
     @outlet CPView          viewEditorSubtype;
-    @outlet CPView          viewSubtypeSpecification;
-    
-    @outlet SDSpecificationAssociator   specificationAssociator;
 }
 
 
@@ -73,8 +68,6 @@
     [textField setPlaceholderString:@"Double click to enter the value"];
     [[tableViewEnumarationValues tableColumns][0] setDataView:nil];
     [[tableViewEnumarationValues tableColumns][0] setDataView:textField];
-    [specificationAssociator view];
-    [specificationAssociator setKeyPathForAssociatedObjectID:@"subtypeID"];
 
     [super viewDidLoad];
 }
@@ -100,25 +93,6 @@
         
     [_currentContext setBoundControlsEnabled:conditionCanEdit];
     [self _updateSubtypeAllowedValues];
-}
-
-#pragma mark -
-#pragma mark NUModule API
-
-- (void)moduleDidShow
-{
-    [super moduleDidShow];
-
-    [specificationAssociator setCurrentParent:[_currentContext editedObject]];
-    //[specificationAssociator setFilterPredicate:@"objectRESTName==\"\""];
-    [specificationAssociator setDelegate:self];
-}
-
-- (void)moduleWillHide
-{
-    [super moduleWillHide];
-
-    [specificationAssociator setCurrentParent:nil];
 }
 
 
@@ -208,10 +182,12 @@
         [allowedSubTypes insertObject:@{"value":  SDAttributeSubtypeObject, "label": "Object"} atArrangedObjectIndex:4];
         [allowedSubTypes insertObject:@{"value":  SDAttributeTypeString, "label": "String"} atArrangedObjectIndex:5];
     }
+    else if (type == SDAttributeTypeObject) {
+        var apiFetcher = [[[editedObject parentObject] parentObject] specifications];
+        [apiFetcher fetchAndCallSelector:@selector(_fetcher:ofObject:didFetchAPIs:) ofObject:self];
+        return;
+    }
     
-    [buttonSubtype setHidden: conditionObject];
-    [viewSubtypeSpecification setHidden: !conditionObject];
-
     [buttonSubtype unbind:CPContentBinding];
     [buttonSubtype unbind:CPContentValuesBinding];
     [buttonSubtype unbind:CPSelectedObjectBinding];
@@ -221,20 +197,21 @@
     [buttonSubtype bind:CPSelectedObjectBinding toObject:editedObject withKeyPath:@"subtype" options:nil];
 }
 
-
-#pragma mark -
-#pragma mark Associator Delegates
-
-- (void)didAssociatorRemoveAssociation:(NUAbstractSimpleObjectAssociator)anAssociator
+- (void)_fetcher:(NURESTFetcher)aFetcher ofObject:(SDRESTObject)anObject didFetchAPIs:(CPArray)someAPIs
 {
-    if (anAssociator == specificationAssociator)
-        [[_currentContext editedObject] setSubtype: null];
-}
-
-- (void)didAssociatorFetchAssociatedObject:(id)anAssociator
-{
-    if (anAssociator == specificationAssociator && [anAssociator hasAssociatedObject])
-        [[_currentContext editedObject] setSubtype: [[anAssociator currentAssociatedObject] objectResourceName]];
+    if ([someAPIs count])
+    {
+        var apis         = [[CPArrayController alloc] initWithContent:someAPIs],
+            editedObject = [_currentContext editedObject];
+        
+        [buttonSubtype unbind:CPContentBinding];
+        [buttonSubtype unbind:CPContentValuesBinding];
+        [buttonSubtype unbind:CPSelectedObjectBinding];
+        [buttonSubtype removeAllItems];
+        [buttonSubtype bind:CPContentBinding toObject:apis withKeyPath:@"arrangedObjects.entityName" options:nil];
+        [buttonSubtype bind:CPContentValuesBinding toObject:apis withKeyPath:@"arrangedObjects.entityName" options:nil];
+        [buttonSubtype bind:CPSelectedObjectBinding toObject:editedObject withKeyPath:@"subtype" options:nil];
+    }
 }
 
 @end
