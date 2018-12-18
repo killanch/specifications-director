@@ -63,7 +63,7 @@ class SDSpecificationLogicPlugin(GALogicPlugin):
         specification = context.object
         action = context.request.action
 
-        specification.name = '%s.spec' % (specification.object_rest_name if specification.object_rest_name is not None else specification.object_resource_name)
+        specification.name = '%s.spec' % (specification.object_rest_name.strip() if specification.object_rest_name and specification.object_rest_name.strip() else specification.object_resource_name.strip())
 
         response = self._storage_controller.get_all(user_identifier=context.session.root_object.id, parent=repository, resource_name=self._sdk.SDSpecification.rest_name, filter='name == "%s"' % specification.name)
 
