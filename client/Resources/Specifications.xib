@@ -266,7 +266,6 @@
                     </textFieldCell>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="string" keyPath="tag" value="objectResourceName"/>
-                        <userDefinedRuntimeAttribute type="boolean" keyPath="required" value="YES"/>
                     </userDefinedRuntimeAttributes>
                     <connections>
                         <outlet property="nextKeyView" destination="ebz-ru-ubX" id="ASb-wn-9r4"/>
