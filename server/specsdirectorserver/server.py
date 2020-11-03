@@ -27,7 +27,7 @@
 # SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 import logging
-import simpleldap
+#import simpleldap
 import os
 import specdk.v1_0 as specdk
 
